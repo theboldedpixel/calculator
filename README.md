@@ -1,0 +1,1 @@
+Basic calculator developed in the browser which can add, subract, multiply, divide, clear and display results of data.
