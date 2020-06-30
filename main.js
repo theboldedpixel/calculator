@@ -7,7 +7,10 @@ let divide = (a, b) => (a / b);
 
 // Operate function to display results
 function operate(a, operator, b) {
-  if (operator === '+') {
+  if (operator === '/' && b === 0) {
+    alert('You can\'t divide by zero!');
+    clearAll();
+  } else if (operator === '+') {
     let answer = add(a, b);
     return answer;
   } else if (operator === '-') {
@@ -25,40 +28,62 @@ function operate(a, operator, b) {
 let numA = [];
 let numB = [];
 let numC = [];
+let numD = [];
+
 let operator = null;
+let operator2 = null;
+let operator3 = null;
+
 
 function displayAsPressed() {
-  if (operator !== null && numB.length === 0) {
+  if (operator3 !== null && numD.length > 0) {
+    content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join('')) + operator2 + ' ' + Number(numC.join('')) + ' ' + operator3 + ' ' + Number(numD.join(''));
+  } else if (operator3 !== null && numD.length === 0) {
+      content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join('')) + ' ' + operator2 + ' ' + Number(numC.join('')) + ' ' + operator3;
+  } else if (operator2 !== null && numC.length > 0) {
+    content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join('')) + ' ' + operator2 + ' ' + Number(numC.join(''));
+  } else if (operator2 !== null && numC.length === 0) {
+    content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join('')) + ' ' + operator2;
+  } else if (operator !== null && numB.length > 0) {
+    content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join(''));
+  } else if (operator !== null && numB.length === 0) {
     content.textContent = Number(numA.join('')) + ' ' + operator;
-  } else if (operator !== null) {
-    content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join('')) 
   } else {
     content.textContent = Number(numA.join(''));
   }
 }
 
-// let pressedOne = () => (operator === null ? numA.push('1') : numB.push('1'));
 
-// let pressedTwo = () => (operator === null ? numA.push('2') : numB.push('2'));
+// {
+//   if (operator3 !== null && numD.length === 0){
+//     content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join('')) + ' ' + operator2 + ' ' + Number(numC.join('')) + ' ' + operator3;
+//   } else if (operator3 !== null) {
+//     content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join('')) + ' ' + operator2 + ' ' + Number(numC.join('')) + ' ' + operator3 + ' ' + Number(numD.join(''));
+//   } else if (operator2 !== null && numC.length === 0) {
+//     content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join('')) + ' ' + operator2;
+//   } else if (operator2 !== null & numC.length > 0) {
+//     content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join('')) + ' ' + operator2 + ' ' + Number(numC.join(''));
+//   } else if (operator2 !== null) {
+//     content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join('')) + ' ' + operator2 + ' ' + Number(numC.join(''));
+//   } else if (operator !== null && numB.length === 0) {
+//     content.textContent = Number(numA.join('')) + ' ' + operator;
+//   } else if (operator !== null) {
+//     content.textContent = Number(numA.join('')) + ' ' + operator + ' ' + Number(numB.join('')) 
+//   } else {
+//     content.textContent = Number(numA.join(''));
+//   }
+// }
 
-// let pressedThree = () => (operator === null ? numA.push('3') : numB.push('3'));
 
-// let pressedFour = () => (operator === null ? numA.push('4') : numB.push('4'));
-
-// let pressedFive = () => (operator === null ? numA.push('5') : numB.push('5'));
-
-// let pressedSix = () => (operator === null ? numA.push('6') : numB.push('6'));
-
-// let pressedSeven = () => (operator === null ? numA.push('7') : numB.push('7'));
-
-// let pressedEight = () => (operator === null ? numA.push('8') : numB.push('8'));
-
-// let pressedNine = () => (operator === null ? numA.push('9') : numB.push('9'));
-
-// let pressedZero = () => (operator === null ? numA.push('0') : numB.push('0'));
 
 function pressedOne() {
-  if (operator === null) {
+  if (operator3 !== null) {
+    numD.push('1')
+    displayAsPressed();
+  } else if (operator2 !== null) {
+    numC.push('1');
+    displayAsPressed();
+  } else if (operator === null) {
     numA.push('1');
     displayAsPressed();
   } else {
@@ -68,7 +93,13 @@ function pressedOne() {
 }
 
 function pressedTwo() {
-  if (operator === null) {
+  if (operator3 !== null) {
+    numD.push('2')
+    displayAsPressed();
+  } else if (operator2 !== null) {
+    numC.push('2');
+    displayAsPressed();
+  } else if (operator === null) {
     numA.push('2');
     displayAsPressed();
   } else {
@@ -77,7 +108,13 @@ function pressedTwo() {
   }
 }
 function pressedThree() {
-  if (operator === null) {
+  if (operator3 !== null) {
+    numD.push('3')
+    displayAsPressed();
+  } else if (operator2 !== null) {
+    numC.push('3');
+    displayAsPressed();
+  } else if (operator === null) {
     numA.push('3');
     displayAsPressed();
   } else {
@@ -86,7 +123,13 @@ function pressedThree() {
   }
 }
 function pressedFour() {
-  if (operator === null) {
+  if (operator3 !== null) {
+    numD.push('4')
+    displayAsPressed();
+  } else if (operator2 !== null) {
+    numC.push('4');
+    displayAsPressed();
+  } else if (operator === null) {
     numA.push('4');
     displayAsPressed();
   } else {
@@ -95,7 +138,13 @@ function pressedFour() {
   }
 }
 function pressedFive() {
-  if (operator === null) {
+  if (operator3 !== null) {
+    numD.push('5')
+    displayAsPressed();
+  } else if (operator2 !== null) {
+    numC.push('5');
+    displayAsPressed();
+  } else if (operator === null) {
     numA.push('5');
     displayAsPressed();
   } else {
@@ -104,7 +153,13 @@ function pressedFive() {
   }
 }
 function pressedSix() {
-  if (operator === null) {
+  if (operator3 !== null) {
+    numD.push('6')
+    displayAsPressed();
+  } else if (operator2 !== null) {
+    numC.push('6');
+    displayAsPressed();
+  } else if (operator === null) {
     numA.push('6');
     displayAsPressed();
   } else {
@@ -113,7 +168,13 @@ function pressedSix() {
   }
 }
 function pressedSeven() {
-  if (operator === null) {
+  if (operator3 !== null) {
+    numD.push('7')
+    displayAsPressed();
+  } else if (operator2 !== null) {
+    numC.push('7');
+    displayAsPressed();
+  } else if (operator === null) {
     numA.push('7');
     displayAsPressed();
   } else {
@@ -122,7 +183,13 @@ function pressedSeven() {
   }
 }
 function pressedEight() {
-  if (operator === null) {
+  if (operator3 !== null) {
+    numD.push('8')
+    displayAsPressed();
+  } else if (operator2 !== null) {
+    numC.push('8');
+    displayAsPressed();
+  } else if (operator === null) {
     numA.push('8');
     displayAsPressed();
   } else {
@@ -131,7 +198,13 @@ function pressedEight() {
   }
 }
 function pressedNine() {
-  if (operator === null) {
+  if (operator3 !== null) {
+    numD.push('9')
+    displayAsPressed();
+  } else if (operator2 !== null) {
+    numC.push('9');
+    displayAsPressed();
+  } else if (operator === null) {
     numA.push('9');
     displayAsPressed();
   } else {
@@ -140,7 +213,13 @@ function pressedNine() {
   }
 }
 function pressedZero() {
-  if (operator === null) {
+  if (operator3 !== null) {
+    numD.push('0')
+    displayAsPressed();
+  } else if (operator2 !== null) {
+    numC.push('0');
+    displayAsPressed();
+  } else if (operator === null) {
     numA.push('0');
     displayAsPressed();
   } else {
@@ -196,45 +275,279 @@ const enter = document.querySelector('.enter');
 enter.addEventListener('click', enterData);
 
 function addIt() {
+  if (operator !== null && operator2 !== null) {
+    operator3 = '+';
+    displayAsPressed();
+  } else if (operator !== null) {
+    operator2 = '+';
+    displayAsPressed();
+  } else {
+
   operator = '+';
   displayAsPressed();
+  }
 }
 
 function subractIt() {
+  if (operator !== null && operator2 !== null) {
+    operator3 = '-';
+    displayAsPressed();
+  } else if (operator !== null) {
+    operator2 = '-';
+    displayAsPressed();
+  } else {
   operator = '-';
   displayAsPressed();
+ }
 }
 
 function multiplyIt() {
+  if (operator !== null && operator2 !== null) {
+    operator3 = '*';
+    displayAsPressed();
+  } else if (operator !== null) {
+    operator2 = '*';
+    displayAsPressed();
+  } else {
   operator = '*';
   displayAsPressed();
+  }
 }
 
 function divideIt() {
+  if (operator !== null && operator2 !== null) {
+    operator3 = '/';
+    displayAsPressed();
+  } else if (operator !== null) {
+    operator2 = '/';
+    displayAsPressed();
+  } else {
+
   operator = '/';
   displayAsPressed();
+  }
 }
 
 function clearAll() {
   numA = [];
   numB = [];
+  numC = [];
+  numD = [];
   operator = null;
+  operator2 = null;
+  operator3 = null;
   content.textContent = 'Enter equation here'
 }
 
-function enterData() {
-  // let answer = operate(Number(numA.join('')), operator, Number(numB.join('')));
-  let numACombined = Number(numA.join(''));
-  let numBCombined = Number(numB.join(''));
+// function enterData() {
+//   let numACombined = Number(numA.join(''));
+//   let numBCombined = Number(numB.join(''));
 
-  newAnswer = operate(numACombined, operator, numBCombined);
-  console.log(newAnswer);
-  content.textContent = newAnswer;
-}
+//   newAnswer = operate(numACombined, operator, numBCombined);
+//   console.log(newAnswer);
+//   content.textContent = newAnswer;
+// }
 
 // Display text
 const content = document.querySelector('.content');
 
 
+// Switch for enterData()
 
+function enterData() {
+  // Simple math with 2 integers
+  if (operator2 === null){
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
 
+    newAnswer = operate(numACombined, operator, numBCombined);
+    console.log(newAnswer);
+    content.textContent = newAnswer;
+    // Three integers, first operator division. GOes in direct order
+  } else if (operator3 === null && operator === '/') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+
+    newAnswer = operate(numACombined, operator, numBCombined);
+    nextAnswer = operate(newAnswer, operator2, numCCombined);
+    content.textContent = nextAnswer;
+    // Three integers, first operator multiplication. Goes in direct order
+  } else if (operator3 === null && operator === '*') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+
+    newAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextAnswer = operate(newAnswer, operator2, numCCombined);
+    content.textContent = nextAnswer;
+    console.log(nextAnswer);
+  // Three integers, second operator multiplication. B * C = D. A + D
+  } else if (operator3 === null && operator2 === '*') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+
+    newAnswer = Number(operate(numBCombined, operator2, numCCombined));
+    nextAnswer = operate(numACombined, operator, newAnswer);
+    content.textContent = nextAnswer;
+    console.log(nextAnswer);
+    // Three integers, second operator division. B * C = D. A + D
+  } else if (operator3 === null && operator2 === '/') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+
+    newAnswer = Number(operate(numBCombined, operator2, numCCombined));
+    nextAnswer = operate(numACombined, operator, newAnswer);
+    content.textContent = nextAnswer;
+    console.log(nextAnswer);
+    // Everything else without 4th integer
+  } else if (operator3 === null) {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+
+    newAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextAnswer = operate(newAnswer, operator2, numCCombined);
+    content.textContent = nextAnswer;
+    console.log(nextAnswer);
+
+    // 4th integer
+
+    // Brain hurts. First & Second Operator division. Straight Order.
+  } else if (operator === '/' && operator2 === '/') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextAnswer = Number(operate(newAnswer, operator2, numCCombined));
+    nextNextAnswer = operate(nextAnswer, operator3, numDCombined);
+    content.textContent = nextNextAnswer;
+  } else if (operator === '/' && operator2 === '*') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextAnswer = Number(operate(newAnswer, operator2, numCCombined));
+    nextNextAnswer = operate(nextAnswer, operator3, numDCombined);
+    content.textContent = nextNextAnswer;
+} else if (operator === '*' && operator2 === '/') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextAnswer = Number(operate(newAnswer, operator2, numCCombined));
+    nextNextAnswer = operate(nextAnswer, operator3, numDCombined);
+    content.textContent = nextNextAnswer;
+} else if (operator === '*' && operator2 === '*') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextAnswer = Number(operate(newAnswer, operator2, numCCombined));
+    nextNextAnswer = operate(nextAnswer, operator3, numDCombined);
+    content.textContent = nextNextAnswer;
+    // First operator divide. Third multiply. 
+} else if (operator === '/' && operator3 === '*') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextAnswer = Number(operate(numCCombined, operator3, numDCombined));
+    nextNextAnswer = operate(newAnswer, operator2, nextAnswer);
+    content.textContent = nextNextAnswer;
+} else if (operator === '/' && operator3 === '/') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextAnswer = Number(operate(numCCombined, operator3, numDCombined));
+    nextNextAnswer = operate(newAnswer, operator2, nextAnswer);
+    content.textContent = nextNextAnswer;
+} else if (operator === '*' && operator3 === '/') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextAnswer = Number(operate(numCCombined, operator3, numDCombined));
+    nextNextAnswer = operate(newAnswer, operator2, nextAnswer);
+    content.textContent = nextNextAnswer;
+} else if (operator === '*' && operator3 === '*') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextAnswer = Number(operate(numCCombined, operator3, numDCombined));
+    nextNextAnswer = operate(newAnswer, operator2, nextAnswer);
+    content.textContent = nextNextAnswer;
+    // Only operator2.
+}  else if (operator2 === '/') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numBCombined, operator2, numCCombined));
+    nextAnswer = Number(operate(numACombined, operator, numACombined));
+    nextNextAnswer = operate(nextAnswer, operator2, numDCombined);
+    content.textContent = nextNextAnswer;
+} else if (operator2 === '*') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numBCombined, operator2, numCCombined));
+    nextAnswer = Number(operate(numACombined, operator, numACombined));
+    nextNextAnswer = operate(nextAnswer, operator2, numDCombined);
+    content.textContent = nextNextAnswer;
+    // Only operator3
+} else if (operator3 === '*') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numCCombined, operator3, numDCombined));
+    nextAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextNextAnswer = operate(nextAnswer, operator2, newAnswer);
+    content.textContent = nextNextAnswer;
+} else if (operator3 === '/') {
+    let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numCCombined, operator3, numDCombined));
+    nextAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextNextAnswer = operate(nextAnswer, operator2, newAnswer);
+    content.textContent = nextNextAnswer;
+} else {
+  let numACombined = Number(numA.join(''));
+    let numBCombined = Number(numB.join(''));
+    let numCCombined = Number(numC.join(''));
+    let numDCombined = Number(numD.join(''));
+
+    newAnswer = Number(operate(numACombined, operator, numBCombined));
+    nextAnswer = Number(operate(newAnswer, operator2, numCCombined));
+    nextNextAnswer = operate(nextAnswer, operator3, numDCombined);
+    content.textContent = nextNextAnswer;
+}
+}
